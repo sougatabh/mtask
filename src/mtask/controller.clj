@@ -38,8 +38,11 @@
    [req]
    (let [username (:username (:session req))
         params (:params req)]
-   
-   (->> (show-welcome-page username) response)
+   (let [tasks(select mtask_task_detail(where{:assigned_to username}))]
+     
+     (->> (show-welcome-page username tasks) response)
+     
+   )
    
    )
 )  
@@ -95,7 +98,7 @@
 (let [params (:params req)]
   (let [startdate(string-to-date (get params"startdate"))]
     (let [enddate (string-to-date (get params"enddate"))]
-       (println enddate)
+       
       (insert  mtask_project (values { :projectname (get params "projectname"):description (get params "description"):username "sougata":enddate enddate :startdate startdate}))
     )
  )
@@ -108,9 +111,10 @@
    [req]
    (let [users (select mtask_user)
          projects(select mtask_project)
-        params (:params req)]
-   
-   (->> (show-create-task-page users projects) response)
+        params (:params req)
+        statuses(select mtask_code(where{:type "TASK_STATUS"}))
+        ]
+     (->> (show-create-task-page users projects statuses) response)
    
    )
 )  
@@ -122,7 +126,7 @@
 (let [startdate(string-to-date (get params"startdate"))]
     (let [enddate (string-to-date (get params"enddate"))]
        (println enddate)
-      (insert  mtask_task_detail (values { :title (get params "tasktitle"):description (get params "description"):assigned_to (get params "assigned_to"):assigned_by "sougata":projectname (get params "projectname"):enddate enddate :startdate startdate}))
+      (insert  mtask_task_detail (values { :title (get params "tasktitle"):description (get params "description"):assigned_to (get params "assigned_to"):assigned_by "sougata":projectname (get params "projectname"):status (get params "task_status"):enddate enddate :startdate startdate}))
     )
  )
   

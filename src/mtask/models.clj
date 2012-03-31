@@ -13,3 +13,4 @@
 (defentity mtask_user_detail)
 (defentity mtask_project)
 (defentity mtask_task_detail)
+(defentity mtask_code)

@@ -38,6 +38,8 @@
     	
     	document.getElementById('assigned_to').value = document.getElementById('assign').value;
     	document.getElementById('projectname').value = document.getElementById('project').value;
+    	document.getElementById('task_status').value = document.getElementById('status').value;
+    	
     	
     	return true;
     }
@@ -90,9 +92,20 @@
         </select>
       
     </div>
+    
+    <div class="fm-opt">
+      <label for="assign">Status:</label>
+      
+        <select name="status" id="status" >
+        	<option>Select</option>
+        	<option class="status row"><div class="value"></div></option>
+        </select>
+      
+    </div>
+    
     <input type="hidden"  id= "assigned_to" value="" name="assigned_to">
     <input type="hidden"  id= "projectname" value="" name="projectname">
-   
+   <input type="hidden"  id= "task_status" value="" name="task_status">
     </fieldset>
     <div id="fm-submit" class="fm-req">
       <input name="Submit" value="Submit" type="submit" onClick="updateAssignTo()" />

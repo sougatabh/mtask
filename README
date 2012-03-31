@@ -1,10 +1,18 @@
 # mtask
+This is a project management tool.User can create user,create project and task. Task can be assigned to any user of the project.
+Current version is a very basic. Will be updating very soon.
 
-FIXME: write description
 
 ## Usage
+Step 1: Install clojure and repl and mysql.
+Step 2: Setup mysql server. run the mysql.sql file located under project home folder.
+Step 3: Change the models.clj with database information.
+Step 4: Now compile the application using below command from repl command prompt
+       (use 'mtask.core)
+Step 5: Run the application using command (start 8888) 
+Step 6: point your browser with localhost:8888
+   This will show you the login page, press the "sign in'  link for new user.Now Sign in with the user name and password. Create new project and Create new task for that project.
 
-FIXME: write
 
 ## License
 
